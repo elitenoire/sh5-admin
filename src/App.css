@@ -40,3 +40,25 @@
     transform: rotate(360deg);
   }
 }
+/* flowbite button */
+.ds-btn {
+  --btn-text-case: none;
+  min-height: 0;
+  height: auto;
+  @apply text-sm;
+  @apply px-5;
+  @apply py-2.5;
+}
+.ds-btn-xs {
+  @apply text-xs;
+}
+.ds-btn-xs,
+.ds-btn-sm {
+    @apply px-3;
+    @apply py-2;
+}
+.ds-btn-lg {
+  @apply text-base;
+  @apply px-5;
+  @apply py-3;
+}

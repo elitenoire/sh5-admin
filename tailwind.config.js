@@ -13,7 +13,7 @@ module.exports = {
 	},
 	daisyui: {
 		// darkTheme: 'dark',
-		// themes: ['winter', 'night'],
+		prefix: 'ds-',
 		themes: [
 			{
 				light: {
