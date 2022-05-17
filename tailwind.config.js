@@ -21,9 +21,11 @@ module.exports = {
 					primary: '#3366FF',
 					'primary-focus': '#2e5ce6',
 					'primary-content': '#D6E4FF',
+					'--navbar-padding': defaultTheme.spacing['1'],
 				},
 				dark: {
 					...daisyThemes['[data-theme=night]'],
+					'--navbar-padding': defaultTheme.spacing['1'],
 				},
 			},
 		],

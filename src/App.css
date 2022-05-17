@@ -2,63 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@layer components {
+  .ds-btn {
+    --btn-text-case: none;
+    --rounded-btn: 0.6875em;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .ds-btn-pastel {
+    @apply ds-btn-ghost;
   }
-  to {
-    transform: rotate(360deg);
+  .ds-btn-pastel:hover,
+  .ds-btn-pastel.ds-btn-active,
+  .ds-btn-pastel.active {
+    @apply bg-base-200 dark:bg-base-content/10 text-primary dark:text-current;
   }
-}
-/* flowbite button */
-.ds-btn {
-  --btn-text-case: none;
-  min-height: 0;
-  height: auto;
-  @apply text-sm;
-  @apply px-5;
-  @apply py-2.5;
-}
-.ds-btn-xs {
-  @apply text-xs;
-}
-.ds-btn-xs,
-.ds-btn-sm {
-    @apply px-3;
-    @apply py-2;
-}
-.ds-btn-lg {
-  @apply text-base;
-  @apply px-5;
-  @apply py-3;
 }
