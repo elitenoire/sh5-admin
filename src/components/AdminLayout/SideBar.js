@@ -1,13 +1,19 @@
 import { NavLink } from 'react-router-dom'
-import { Category2, Tag2, People, UserSquare, LogoutCurve, Moon, Sun1 } from 'iconsax-react'
+import { Category2, Tag2, People, UserSquare, LogoutCurve, Moon, Sun1, Add } from 'iconsax-react'
 import { useDarkMode } from '../DarkMode'
 import { ReactComponent as LogoSvg } from '../../assets/brand/logo.svg'
 
-function SideBar({ toggle }) {
+function SideBar({ close }) {
 	const { darkMode, toggle: toggleDarkMode } = useDarkMode()
 
 	return (
-		<div className="flex flex-col h-full">
+		<div className="flex flex-col h-full relative">
+			<button
+				onClick={close}
+				className="ds-btn ds-btn-pastel ds-btn-circle ds-btn-sm md:hidden absolute right-1 top-4 rotate-45"
+			>
+				<Add className="w-7 h-7" />
+			</button>
 			<div className="flex items-center md:justify-center lg:justify-start py-1.5 px-4">
 				<span className="w-[3.25rem] h-[3.25rem] p-3 rounded-full bg-primary text-primary-content">
 					<LogoSvg className="fill-current" />
@@ -22,7 +28,7 @@ function SideBar({ toggle }) {
 						<NavLink
 							to="/dashboard"
 							className="ds-btn-pastel border-0 rounded-box font-medium md:flex-col lg:flex-row gap-y-1"
-							onClick={toggle}
+							onClick={close}
 						>
 							<Category2 className="w-7 h-7" variant="TwoTone" />
 							Dashboard
@@ -32,7 +38,7 @@ function SideBar({ toggle }) {
 						<NavLink
 							to="/products"
 							className="ds-btn-pastel border-0 rounded-box font-medium md:flex-col lg:flex-row gap-y-1"
-							onClick={toggle}
+							onClick={close}
 						>
 							<Tag2 className="w-7 h-7" variant="TwoTone" />
 							Products
@@ -42,7 +48,7 @@ function SideBar({ toggle }) {
 						<NavLink
 							to="/customers"
 							className="ds-btn-pastel border-0 rounded-box font-medium md:flex-col lg:flex-row gap-y-1"
-							onClick={toggle}
+							onClick={close}
 						>
 							<People className="w-7 h-7" variant="TwoTone" />
 							Customers
@@ -52,7 +58,7 @@ function SideBar({ toggle }) {
 						<NavLink
 							to="/team"
 							className="ds-btn-pastel border-0 rounded-box font-medium md:flex-col lg:flex-row gap-y-1"
-							onClick={toggle}
+							onClick={close}
 						>
 							<UserSquare className="w-7 h-7" variant="TwoTone" />
 							Team
@@ -75,7 +81,7 @@ function SideBar({ toggle }) {
 					</span>
 				</button>
 				<button
-					onClick={toggle}
+					onClick={close}
 					className="ds-btn ds-btn-outline ds-btn-block md:ds-btn-circle lg:ds-btn-block lg:px-4 gap-2 rounded-box lg:rounded-box text-left"
 				>
 					<span className="flex flex-col  flex-1 md:hidden lg:flex">

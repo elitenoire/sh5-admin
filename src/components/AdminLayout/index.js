@@ -8,9 +8,9 @@ import SideBar from './SideBar'
 function AdminLayout() {
 	const drawerCheckboxRef = useRef()
 
-	const toggle = useCallback(() => {
+	const close = useCallback(() => {
 		if (!drawerCheckboxRef.current) return
-		drawerCheckboxRef.current.checked = !drawerCheckboxRef.current.checked
+		drawerCheckboxRef.current.checked = false
 	}, [])
 
 	return (
@@ -34,7 +34,7 @@ function AdminLayout() {
 					Main Menu
 				</label>
 				<div className="md:!translate-x-0 bg-inherit w-full max-w-[15rem] md:w-36 lg:w-60 lg:max-w-none">
-					<SideBar toggle={toggle} />
+					<SideBar close={close} />
 				</div>
 			</aside>
 		</div>
