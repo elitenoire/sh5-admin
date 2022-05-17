@@ -29,7 +29,7 @@ function AdminLayout() {
 					<Outlet />
 				</div>
 			</main>
-			<aside className="ds-drawer-side md:overflow-y-auto bg-base-100 border-r border-transparent md:border-base-300">
+			<aside className="ds-drawer-side md:overflow-y-auto bg-base-100 border-r border-transparent md:border-base-300 dark:md:border-base-content/10">
 				<label htmlFor="sidebar-toggle" className="ds-drawer-overlay md:visible">
 					Main Menu
 				</label>

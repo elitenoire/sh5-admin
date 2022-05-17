@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const daisyThemes = require('daisyui/src/colors/themes')
 
 module.exports = {
+	darkMode: 'class',
 	content: ['./src/**/*.{js,ts,jsx,tsx}'],
 	plugins: [require('daisyui')],
 	theme: {

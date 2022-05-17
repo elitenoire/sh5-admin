@@ -13,7 +13,7 @@ function TopBar({ children }) {
 	const { pathname } = useLocation()
 	const path = getCurrentRoute(pathname)
 	return (
-		<header className="ds-navbar bg-base-100 border-b border-base-300 justify-between px-2">
+		<header className="ds-navbar bg-base-100 border-b border-base-300 dark:border-base-content/10 justify-between px-2">
 			<div className="">
 				<div className="md:hidden">{children}</div>
 				<div className="flex items-center">
