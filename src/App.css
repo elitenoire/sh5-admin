@@ -7,9 +7,11 @@
     --btn-text-case: none;
     --rounded-btn: 0.6875em;
   }
+
   .ds-btn-pastel {
     @apply ds-btn-ghost;
   }
+
   .ds-btn-pastel:hover,
   .ds-btn-pastel.ds-btn-active,
   .ds-btn-pastel.active {
@@ -19,4 +21,34 @@
   .ds-table-dark :where(tbody th, tbody td) {
     @apply dark:bg-neutral/50
   }
+}
+
+
+
+/* Scroll thumb styles */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 dark:bg-neutral rounded-2xl;
+}
+
+::-webkit-scrollbar-thumb:active {
+  @apply bg-primary/70 dark:bg-neutral;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/70 dark:bg-neutral;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll track styles (Background) */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track:hover,
+::-webkit-scrollbar-track:active {
+  @apply bg-primary/10 dark:bg-neutral/20;
 }
