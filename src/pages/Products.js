@@ -1,12 +1,18 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useEffect } from 'react'
 import ProductCard from '../components/ProductCard'
+import NotFound from '../components/NotFound'
+import Loading from '../components/Loading'
+
+import { useAxios } from '../hooks/useAxios'
 
 function Products() {
-	const [products, setProducts] = useState()
+	const { response: products, error, loading, axiosFetch } = useAxios()
 
 	useEffect(() => {
-		axios.get('https://fakerapi.it/api/v1/products?_quantity=10').then(response => setProducts(response.data))
+		axiosFetch({
+			url: 'https://fakerapi.it/api/v1/products?_quantity=10',
+		})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	return (
@@ -14,7 +20,9 @@ function Products() {
 			<h1 className="pb-4 mb-4 text-4xl lg:text-5xl font-bold border-b-2 border-base-300 dark:border-base-content/10">
 				Products
 			</h1>
-			{products?.data ? (
+			{loading && <Loading page />}
+			{!loading && error && <NotFound error={error} />}
+			{!loading && !error && products?.data ? (
 				<>
 					<p className="text-right mb-4">
 						Total: <span className="font-bold text-primary">{products.total}</span>
