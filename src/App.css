@@ -27,11 +27,15 @@
 
 /* Scroll thumb styles */
 ::-webkit-scrollbar {
-  @apply w-2 h-2;
+  width: 16px;
 }
 
 ::-webkit-scrollbar-thumb {
   @apply bg-primary/50 dark:bg-neutral rounded-2xl;
+  background-clip: content-box;
+  border: 4px solid transparent;
+  height: 56px;
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:active {
