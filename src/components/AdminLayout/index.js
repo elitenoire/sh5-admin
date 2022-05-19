@@ -25,7 +25,7 @@ function AdminLayout() {
 						<HambergerMenu variant="TwoTone" className="w-7 h-7" />
 					</label>
 				</TopBar>
-				<div className="w-full flex-1 bg-base-200 p-6">
+				<div className="w-full flex-1 bg-base-200 py-6 px-3 xs:px-6">
 					<Outlet />
 				</div>
 			</main>

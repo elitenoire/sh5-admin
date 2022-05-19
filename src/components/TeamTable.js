@@ -19,7 +19,7 @@ function TeamTable({ headers = [], body = [] }) {
 				</thead>
 				<tbody>
 					{body?.map((row = {}, id) => (
-						<tr key={`tr-${id}-${row.id}`}>
+						<tr key={`tr-${id}-${row.id}`} className="ds-hover">
 							<th>
 								<label>
 									<input type="checkbox" className="ds-checkbox ds-checkbox-primary" />
@@ -32,7 +32,7 @@ function TeamTable({ headers = [], body = [] }) {
 											<img src={row.image} alt={row.firstname} />
 										</div>
 									</div>
-									<div className="">{`${row.firstname} ${row.lastname}`}</div>
+									<div>{`${row.firstname} ${row.lastname}`}</div>
 								</div>
 							</td>
 							<td>{row.gender}</td>

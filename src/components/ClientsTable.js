@@ -19,7 +19,7 @@ function ClientsTable({ headers = [], body = [] }) {
 				</thead>
 				<tbody>
 					{body?.map((row = {}, id) => (
-						<tr key={`tr-${id}-${row.id}`}>
+						<tr key={`tr-${id}-${row.id}`} class="ds-hover">
 							<th>
 								<label>
 									<input type="checkbox" className="ds-checkbox ds-checkbox-primary" />

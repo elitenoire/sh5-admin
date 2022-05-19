@@ -1,6 +1,6 @@
 function Countdown() {
 	return (
-		<div className="flex-1">
+		<div className="flex-1 pb-6">
 			<h2 className="text-lg font-bold mb-3">Reminder</h2>
 			<div className="ds-stack w-full">
 				<div className="rounded-3xl p-6 text-center bg-primary dark:bg-neutral/70 text-primary-content dark:text-neutral-content">

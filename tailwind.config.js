@@ -26,8 +26,11 @@ module.exports = {
 				light: {
 					...daisyThemes['[data-theme=winter]'],
 					primary: '#3366FF',
-					'primary-focus': '#2e5ce6',
+					'primary-focus': '#2E5CE6',
 					'primary-content': '#D6E4FF',
+					accent: '#F9F2EA',
+					success: '#46BAAD',
+					error: '#FF7575',
 					'--navbar-padding': defaultTheme.spacing['1'],
 				},
 				dark: {
