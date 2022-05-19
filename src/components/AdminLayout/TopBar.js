@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { SearchNormal1, Notification, LogoutCurve } from 'iconsax-react'
-
+import { useAuth } from '../../hooks/useAuth'
 import { ReactComponent as LogoSvg } from '../../assets/brand/logo.svg'
 
 function getCurrentRoute(path) {
@@ -10,6 +10,7 @@ function getCurrentRoute(path) {
 }
 
 function TopBar({ children }) {
+	const { user, logout } = useAuth()
 	const { pathname } = useLocation()
 	const path = getCurrentRoute(pathname)
 	return (
@@ -46,7 +47,7 @@ function TopBar({ children }) {
 					<label tabIndex="0" className="ds-btn ds-btn-link ds-btn-circle ds-avatar flex w-14 h-14">
 						<div className="p-0.5 bg-base-100 ds-mask ds-mask-squircle">
 							<img
-								src="https://api.lorem.space/image/face?hash=24935"
+								src="https://api.lorem.space/image/face?w=150&h=150&hash=24935"
 								alt="avatar"
 								className="ds-mask ds-mask-squircle"
 							/>
@@ -58,9 +59,9 @@ function TopBar({ children }) {
 					>
 						<div className="ds-card-body text-right gap-0">
 							<span className="opacity-75">You're logged in as:</span>
-							<span className="font-medium text-lg truncate">admin@demo.com</span>
+							<span className="font-medium text-lg truncate">{user?.email || 'admin@demo.com'}</span>
 							<div className="ds-card-actions mt-2">
-								<button className="ds-btn ds-btn-primary ds-btn-block justify-between">
+								<button onClick={logout} className="ds-btn ds-btn-primary ds-btn-block justify-between">
 									Log out
 									<LogoutCurve variant="TwoTone" className="w-5 h-5" />
 								</button>

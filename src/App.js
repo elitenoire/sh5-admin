@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Login from './pages/Login'
 import AuthProtected from './components/AuthProtected'
 import AdminLayout from './components/AdminLayout'
 import NotFound from './components/NotFound'
@@ -13,8 +14,8 @@ function App() {
 			<Router>
 				<AuthProvider>
 					<Routes>
-						<Route path="/login" element={<p>Login Route!</p>} />
-						<Route element={<AuthProtected isAllowed />}>
+						<Route path="/login" element={<Login />} />
+						<Route element={<AuthProtected isAllowed={false} />}>
 							<Route path="/" element={<AdminLayout />}>
 								<Route index element={<p>Dashboard</p>} />
 								<Route path="dashboard/*" element={<p>Dashboard</p>} />

@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import { Category2, Tag2, People, UserSquare, LogoutCurve, Moon, Sun1, Add } from 'iconsax-react'
 import { useDarkMode } from '../DarkMode'
+import { useAuth } from '../../hooks/useAuth'
 import { ReactComponent as LogoSvg } from '../../assets/brand/logo.svg'
 
 function SideBar({ close }) {
 	const { darkMode, toggle: toggleDarkMode } = useDarkMode()
+	const { user, logout } = useAuth()
 
 	return (
 		<div className="flex flex-col h-full relative">
@@ -81,12 +83,12 @@ function SideBar({ close }) {
 					</span>
 				</button>
 				<button
-					onClick={close}
+					onClick={logout}
 					className="ds-btn ds-btn-outline ds-btn-block md:ds-btn-circle lg:ds-btn-block lg:px-4 gap-2 rounded-box lg:rounded-box text-left"
 				>
-					<span className="flex flex-col  flex-1 md:hidden lg:flex">
+					<span className="flex flex-col flex-1 overflow-hidden md:hidden lg:flex">
 						<span className="opacity-50">Log Out</span>
-						<span>admin@demo.com</span>
+						<span className="truncate">{user?.email || 'admin@demo.com'}</span>
 					</span>
 					<LogoutCurve variant="TwoTone" className="w-7 h-7" />
 				</button>

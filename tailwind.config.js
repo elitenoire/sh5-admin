@@ -6,6 +6,9 @@ module.exports = {
 	content: ['./src/**/*.{js,ts,jsx,tsx}'],
 	plugins: [require('daisyui')],
 	theme: {
+		container: {
+			center: true,
+		},
 		extend: {
 			fontFamily: {
 				sans: ['Outfit', ...defaultTheme.fontFamily.sans],
