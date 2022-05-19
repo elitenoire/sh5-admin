@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 import ProductCard from '../components/ProductCard'
 
 function Products() {
@@ -9,7 +9,6 @@ function Products() {
 		axios.get('https://fakerapi.it/api/v1/products?_quantity=10').then(response => setProducts(response.data))
 	}, [])
 
-	console.log({ products })
 	return (
 		<div>
 			<h1 className="pb-4 mb-4 text-4xl lg:text-5xl font-bold border-b-2 border-base-300 dark:border-base-content/10">

@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './pages/Login'
 import Products from './pages/Products'
+import Clients from './pages/Clients'
+import TeamMembers from './pages/TeamMembers'
 import AuthProtected from './components/AuthProtected'
 import AdminLayout from './components/AdminLayout'
 import NotFound from './components/NotFound'
@@ -21,8 +23,8 @@ function App() {
 								<Route index element={<p>Dashboard</p>} />
 								<Route path="dashboard/*" element={<p>Dashboard</p>} />
 								<Route path="products/*" element={<Products />} />
-								<Route path="customers/*" element={<p>Customers</p>} />
-								<Route path="team/*" element={<p>Team Members</p>} />
+								<Route path="clients/*" element={<Clients />} />
+								<Route path="team/*" element={<TeamMembers />} />
 								<Route path="*" element={<NotFound />} />
 							</Route>
 						</Route>

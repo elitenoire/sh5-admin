@@ -48,12 +48,12 @@ function SideBar({ close }) {
 					</li>
 					<li>
 						<NavLink
-							to="/customers"
+							to="/clients"
 							className="ds-btn-pastel border-0 rounded-box font-medium md:flex-col lg:flex-row gap-y-1"
 							onClick={close}
 						>
 							<People className="w-7 h-7" variant="TwoTone" />
-							Customers
+							Clients
 						</NavLink>
 					</li>
 					<li>

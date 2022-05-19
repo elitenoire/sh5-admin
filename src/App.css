@@ -15,4 +15,8 @@
   .ds-btn-pastel.active {
     @apply bg-base-200 dark:bg-base-content/10 text-primary dark:text-current;
   }
+
+  .ds-table-dark :where(tbody th, tbody td) {
+    @apply dark:bg-neutral/50
+  }
 }
