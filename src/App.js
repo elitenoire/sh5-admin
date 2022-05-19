@@ -3,6 +3,7 @@ import Login from './pages/Login'
 import Products from './pages/Products'
 import Clients from './pages/Clients'
 import TeamMembers from './pages/TeamMembers'
+import Dashboard from './pages/Dashboard'
 import AuthProtected from './components/AuthProtected'
 import AdminLayout from './components/AdminLayout'
 import NotFound from './components/NotFound'
@@ -20,8 +21,8 @@ function App() {
 						<Route path="/login" element={<Login />} />
 						<Route element={<AuthProtected isAllowed />}>
 							<Route path="/" element={<AdminLayout />}>
-								<Route index element={<p>Dashboard</p>} />
-								<Route path="dashboard/*" element={<p>Dashboard</p>} />
+								<Route index element={<Dashboard />} />
+								<Route path="dashboard/*" element={<Dashboard />} />
 								<Route path="products/*" element={<Products />} />
 								<Route path="clients/*" element={<Clients />} />
 								<Route path="team/*" element={<TeamMembers />} />

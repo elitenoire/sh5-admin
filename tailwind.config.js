@@ -13,6 +13,9 @@ module.exports = {
 			fontFamily: {
 				sans: ['Outfit', ...defaultTheme.fontFamily.sans],
 			},
+			screens: {
+				xs: '512px',
+			},
 		},
 	},
 	daisyui: {
