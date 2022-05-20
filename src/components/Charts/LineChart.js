@@ -30,7 +30,14 @@ function LineChart({ data, height, width }) {
 
 	return (
 		<svg height={height} width={width}>
-			<rect x={0} y={0} width={width} height={height} className="fill-primary/10" rx={30} />
+			<rect
+				x={0}
+				y={0}
+				width={width}
+				height={height}
+				className="fill-primary-content dark:fill-neutral/50"
+				rx={30}
+			/>
 
 			<Axis
 				scale={xScale}

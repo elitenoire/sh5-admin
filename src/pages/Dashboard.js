@@ -13,16 +13,16 @@ function Dashboard() {
 			<StatsBoard />
 			<div className="grid lg:grid-cols-[1fr_auto] my-12 gap-y-12 gap-x-8">
 				<div className="lg:col-start-2">
-					<div className="flex flex-col xs:flex-row flex-wrap justify-between lg:max-w-[18rem] gap-y-6 gap-x-12">
+					<div className="flex flex-col xs:flex-row flex-wrap justify-between lg:max-w-[18rem] gap-12">
 						<QuickAction />
 						<Countdown />
 					</div>
 				</div>
-				<div className="lg:row-start-1 lg:row-end-3 min-w-0">
-					<div className="h-72 mb-6">
+				<div className="flex flex-col lg:row-start-1 lg:row-end-3 min-w-0 gap-y-12">
+					<div className="h-72">
 						<LineChart />
 					</div>
-					<div className="flex mb-6">
+					<div className="flex">
 						<div className="h-72 w-full mb-6">
 							<BarChart />
 						</div>
