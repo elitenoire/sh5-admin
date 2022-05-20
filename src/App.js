@@ -19,7 +19,7 @@ function App() {
 				<AuthProvider>
 					<Routes>
 						<Route path="/login" element={<Login />} />
-						<Route element={<AuthProtected isAllowed />}>
+						<Route element={<AuthProtected />}>
 							<Route path="/" element={<AdminLayout />}>
 								<Route index element={<Dashboard />} />
 								<Route path="dashboard/*" element={<Dashboard />} />
