@@ -10,16 +10,11 @@ import { timeParse, timeFormat } from 'd3-time-format'
 
 import { data, keys } from './data/monthlyActivity'
 
-const blue = '#aeeef8'
-export const green = '#e5fd3d'
-const purple = '#9caff6'
-export const background = '#612efb'
-
 const defaultMargin = { top: 60, right: 10, bottom: 40, left: 10 }
 const tooltipStyles = {
 	...defaultStyles,
 	minWidth: 60,
-	backgroundColor: 'rgba(0,0,0,0.9)',
+	backgroundColor: 'rgba(0,0,0,1)',
 	color: 'white',
 	padding: 20,
 	borderRadius: 12,
@@ -51,10 +46,6 @@ const colorScale = scaleOrdinal({
 
 let tooltipTimeout
 
-function logger(data) {
-	console.log(data)
-}
-
 function BarChart({ width, height, events = false, margin = defaultMargin }) {
 	const { tooltipOpen, tooltipTop, tooltipLeft, hideTooltip, showTooltip, tooltipData } = useTooltip()
 
@@ -70,8 +61,8 @@ function BarChart({ width, height, events = false, margin = defaultMargin }) {
 	activityScale.rangeRound([0, dateScale.bandwidth()])
 
 	return width < 10 ? null : (
-		<div style={{ position: 'relative' }}>
-			<svg ref={containerRef} width={width} height={height}>
+		<div className="relative">
+			<svg ref={containerRef} width={width} height={height} className="cursor-pointer">
 				<rect
 					x={0}
 					y={0}
@@ -150,9 +141,11 @@ function BarChart({ width, height, events = false, margin = defaultMargin }) {
 			<div className={`absolute flex justify-center text-sm w-full py-2`}>
 				<LegendOrdinal
 					scale={colorScale}
-					// shapeStyle={({value}) => ({
-
-					// })}
+					fill={({ value }) => {
+						const altColor = value.charAt(0)
+						const color = altColor + value.charAt(1)
+						return `hsl(var(--${color},var(--${altColor})))`
+					}}
 					shape="circle"
 					direction="row"
 					labelMargin="0 1rem 0 0"
