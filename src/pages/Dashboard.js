@@ -4,6 +4,8 @@ import Countdown from '../components/Dashboard/Countdown'
 import ClientsFeed from '../components/Dashboard/ClientsFeed'
 import BestSellers from '../components/Dashboard/BestSellers'
 
+import LineChart from '../components/Charts/LineChart'
+
 function Dashboard() {
 	return (
 		<div>
@@ -16,6 +18,9 @@ function Dashboard() {
 					</div>
 				</div>
 				<div className="lg:row-start-1 lg:row-end-3 min-w-0">
+					<div className="h-72 mb-6">
+						<LineChart />
+					</div>
 					<BestSellers />
 				</div>
 				<div className="lg:max-w-[18rem]">

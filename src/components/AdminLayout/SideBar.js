@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Category2, Tag2, People, UserSquare, LogoutCurve, Moon, Sun1, Add } from 'iconsax-react'
 import { useDarkMode } from '../DarkMode'
 import { useAuth } from '../../hooks/useAuth'
@@ -16,14 +16,14 @@ function SideBar({ close }) {
 			>
 				<Add className="w-7 h-7" />
 			</button>
-			<div className="flex items-center md:justify-center lg:justify-start py-1.5 px-4">
+			<Link to="/" className="flex items-center md:justify-center lg:justify-start py-1.5 px-4">
 				<span className="w-[3.25rem] h-[3.25rem] p-3 rounded-full bg-primary text-primary-content">
 					<LogoSvg className="fill-current" />
 				</span>
 				<span className="text-3xl sm:text-3xl font-semibold uppercase ml-3 md:hidden lg:inline">
 					SH<span className="text-primary">5</span>
 				</span>
-			</div>
+			</Link>
 			<nav>
 				<ul className="ds-menu p-4 gap-3 border-t border-base-300 dark:border-base-content/10">
 					<li>

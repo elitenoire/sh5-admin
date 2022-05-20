@@ -34,8 +34,7 @@ were tasked to create a react dashboard having the following features:-
 
 -   Daisy UI (TailwindCSS)
 -   Visx Charts
--   Dicebear Avatars
--   Heroicons
+-   Iconsax
 -   Google Font Outfit
 
 ### :mage: Our Team
