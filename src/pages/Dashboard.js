@@ -5,6 +5,7 @@ import ClientsFeed from '../components/Dashboard/ClientsFeed'
 import BestSellers from '../components/Dashboard/BestSellers'
 
 import LineChart from '../components/Charts/LineChart'
+import BarChart from '../components/Charts/BarChart'
 
 function Dashboard() {
 	return (
@@ -20,6 +21,11 @@ function Dashboard() {
 				<div className="lg:row-start-1 lg:row-end-3 min-w-0">
 					<div className="h-72 mb-6">
 						<LineChart />
+					</div>
+					<div className="flex mb-6">
+						<div className="h-72 w-full mb-6">
+							<BarChart />
+						</div>
 					</div>
 					<BestSellers />
 				</div>

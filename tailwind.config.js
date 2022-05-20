@@ -14,7 +14,7 @@ module.exports = {
 				sans: ['Outfit', ...defaultTheme.fontFamily.sans],
 			},
 			screens: {
-				xs: '512px',
+				xs: '530px',
 			},
 		},
 	},
