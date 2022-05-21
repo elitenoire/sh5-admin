@@ -1,24 +1,18 @@
+import { useCallback } from 'react'
 import { Group } from '@visx/group'
 import { BarGroup } from '@visx/shape'
 import { AxisBottom } from '@visx/axis'
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale'
-import { useTooltip, useTooltipInPortal, defaultStyles } from '@visx/tooltip'
+import { useTooltip, TooltipWithBounds } from '@visx/tooltip'
 import { LegendOrdinal } from '@visx/legend'
 import { Text } from '@visx/text'
+import { localPoint } from '@visx/event'
 import ParentSize from '@visx/responsive/lib/components/ParentSize'
 import { timeParse, timeFormat } from 'd3-time-format'
 
 import { data, keys } from './data/monthlyActivity'
 
 const defaultMargin = { top: 60, right: 10, bottom: 40, left: 10 }
-const tooltipStyles = {
-	...defaultStyles,
-	minWidth: 60,
-	backgroundColor: 'rgba(0,0,0,1)',
-	color: 'white',
-	padding: 20,
-	borderRadius: 12,
-}
 
 const parseDate = timeParse('%Y-%m-%d')
 const format = timeFormat('%b')
@@ -44,12 +38,8 @@ const colorScale = scaleOrdinal({
 	range: ['success', 'error', 'primary'],
 })
 
-let tooltipTimeout
-
-function BarChart({ width, height, events = false, margin = defaultMargin }) {
-	const { tooltipOpen, tooltipTop, tooltipLeft, hideTooltip, showTooltip, tooltipData } = useTooltip()
-
-	const { containerRef, TooltipInPortal } = useTooltipInPortal()
+function BarChart({ width, height, margin = defaultMargin }) {
+	const { tooltipTop, tooltipLeft, hideTooltip, showTooltip, tooltipData } = useTooltip()
 
 	// bounds
 	const xMax = width - margin.left - margin.right
@@ -60,9 +50,24 @@ function BarChart({ width, height, events = false, margin = defaultMargin }) {
 	volumeScale.range([yMax, 0])
 	activityScale.rangeRound([0, dateScale.bandwidth()])
 
+	const handleTooltip = useCallback(
+		(bar, groupIndex) => {
+			return e => {
+				const point = localPoint(e)
+				if (!point) return
+				showTooltip({
+					tooltipData: { ...bar, gid: groupIndex },
+					tooltipTop: point.y,
+					tooltipLeft: point.x,
+				})
+			}
+		},
+		[showTooltip]
+	)
+
 	return width < 10 ? null : (
 		<div className="relative">
-			<svg ref={containerRef} width={width} height={height} className="cursor-pointer">
+			<svg width={width} height={height} className="cursor-pointer">
 				<rect
 					x={0}
 					y={0}
@@ -93,28 +98,10 @@ function BarChart({ width, height, events = false, margin = defaultMargin }) {
 											width={bar.width}
 											height={bar.height}
 											className={`text-${bar.color} opacity-80 fill-current`}
-											rx={4}
-											onClick={() => {
-												if (!events) return
-												const { key, value, color } = bar
-												alert(JSON.stringify({ key, value, color }))
-											}}
-											onMouseLeave={() => {
-												tooltipTimeout = window.setTimeout(() => {
-													hideTooltip()
-												}, 300)
-											}}
-											onMouseMove={event => {
-												if (tooltipTimeout) clearTimeout(tooltipTimeout)
-												const top = event.clientY - margin.top - bar.height
-												const left = bar.x + bar.width / 2
-												// console.log({ bar, barGroups })
-												showTooltip({
-													tooltipData: { ...bar, gid: barGroup.index },
-													tooltipTop: top,
-													tooltipLeft: left,
-												})
-											}}
+											rx={8}
+											onMouseLeave={hideTooltip}
+											onMouseMove={handleTooltip(bar, barGroup.index)}
+											onTouchMove={handleTooltip(bar, barGroup.index)}
 										/>
 									))}
 								</Group>
@@ -123,6 +110,7 @@ function BarChart({ width, height, events = false, margin = defaultMargin }) {
 					</BarGroup>
 				</Group>
 				<AxisBottom
+					left={margin.left}
 					top={yMax + margin.top}
 					tickFormat={formatDate}
 					scale={dateScale}
@@ -151,8 +139,13 @@ function BarChart({ width, height, events = false, margin = defaultMargin }) {
 					labelMargin="0 1rem 0 0"
 				/>
 			</div>
-			{tooltipOpen && tooltipData && (
-				<TooltipInPortal key={Math.random()} top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
+			{tooltipData && (
+				<TooltipWithBounds
+					key={Math.random()}
+					top={tooltipTop}
+					left={tooltipLeft}
+					className="!p-5 !rounded-xl min-w-[50] !text-neutral-content !bg-neutral dark:!bg-neutral/90"
+				>
 					<div>
 						<span>key: </span>
 						<strong className={`text-${colorScale(tooltipData.key)} opacity-80`}>{tooltipData.key}</strong>
@@ -167,13 +160,13 @@ function BarChart({ width, height, events = false, margin = defaultMargin }) {
 							{timeFormat('%B %Y')(parseDate(data[tooltipData.gid].date))}
 						</strong>
 					</div>
-				</TooltipInPortal>
+				</TooltipWithBounds>
 			)}
 		</div>
 	)
 }
 
-function ResponsiveBarChart({ maxH = 500 }) {
+function ResponsiveBarChart({ maxH = 400 }) {
 	return (
 		<ParentSize>
 			{({ width, height }) => {
