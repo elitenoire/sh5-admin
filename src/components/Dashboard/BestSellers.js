@@ -5,7 +5,9 @@ import Loading from '../../components/Loading'
 
 import { useAxios } from '../../hooks/useAxios'
 
-const headers = ['No', 'ID', 'Name', 'Sold', 'Total', 'Status']
+import { currencyFormatter } from '../../utils'
+
+const headers = ['No', 'ID', 'Name', 'Sold', 'Income', 'Status']
 
 function getRandomNumber(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min
@@ -40,7 +42,7 @@ function Table({ headers, body }) {
 								</div>
 							</td>
 							<td>{Sales[i]}</td>
-							<td>{`$${Sales[i] * parseInt(row.price)}`}</td>
+							<td>{currencyFormatter(Sales[i] * parseInt(row.price))}</td>
 							<td>
 								<span
 									className={`ds-badge ds-badge-sm ds-badge-outline ds-badge-${
