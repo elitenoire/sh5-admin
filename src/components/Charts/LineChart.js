@@ -136,7 +136,7 @@ function LineChart({ data, height, width }) {
 						markerMid="url(#marker-circle)"
 						markerEnd="url(#marker-circle)"
 					/>
-					<Text x={margin.left} y={margin.top / 5} className="text-2xl font-medium fill-base-content">
+					<Text x={margin.left} y={margin.top / 5} className="xs:text-xl font-medium fill-base-content">
 						Total Sales (over 10 days)
 					</Text>
 					{tooltipData && (

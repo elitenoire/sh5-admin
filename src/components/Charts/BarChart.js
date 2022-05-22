@@ -122,7 +122,7 @@ function BarChart({ width, height, margin = defaultMargin }) {
 					tickLineProps={{ className: 'stroke-base-content' }}
 					axisLineClassName="stroke-base-content"
 				/>
-				<Text x={margin.left * 3} y={margin.top / 1.5} className="text-xl font-medium fill-base-content">
+				<Text x={margin.left * 3} y={margin.top / 1.5} className="xs:text-xl font-medium fill-base-content">
 					Monthly Activities (Jan - May)
 				</Text>
 			</svg>
