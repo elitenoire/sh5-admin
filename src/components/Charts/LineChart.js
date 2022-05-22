@@ -48,7 +48,6 @@ function LineChart({ data, height, width }) {
 		() =>
 			scaleLinear({
 				domain: [0, 250],
-				// range: [height - padding, padding * 2],
 				range: [iHeight, 0],
 				// nice: true,
 			}),
@@ -58,9 +57,8 @@ function LineChart({ data, height, width }) {
 	const handleTooltip = useCallback(
 		e => {
 			const { x } = localPoint(e) || { x: 0 }
-			const x0 = xScale.invert(x - margin.left) // get Date from the scale
-
-			const index = bisectDate(data, x0, 1) // get index of this date from the array
+			const x0 = xScale.invert(x - margin.left) // get day from the scale
+			const index = bisectDate(data, x0, 1) // get index of this day from the array
 			const d0 = data[index - 1]
 			const d1 = data[index]
 			let d = d0
@@ -69,8 +67,8 @@ function LineChart({ data, height, width }) {
 				d = x0.valueOf() - getXValue(d0).valueOf() > getXValue(d1).valueOf() - x0.valueOf() ? d1 : d0
 			}
 			showTooltip({
-				tooltipData: d, // getD(d.year),
-				tooltipLeft: x,
+				tooltipData: d,
+				tooltipLeft: xScale(getXValue(d)) + margin.left,
 				tooltipTop: yScale(getYValue(d)),
 			})
 		},
@@ -133,6 +131,9 @@ function LineChart({ data, height, width }) {
 						stroke="url('#line-gradient')"
 						strokeWidth={3}
 						curve={curveNatural}
+						// shapeRendering="geometricPrecision"
+						markerStart="url(#marker-circle)"
+						markerMid="url(#marker-circle)"
 						markerEnd="url(#marker-circle)"
 					/>
 					<Text x={margin.left} y={margin.top / 5} className="text-2xl font-medium fill-base-content">
